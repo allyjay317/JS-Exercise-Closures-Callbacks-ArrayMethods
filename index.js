@@ -132,8 +132,14 @@ function processProduct(num1, num2, callback) {
  * [2] Invoking `processDuplicateFree` passing `[1,1,2,2,3]` and `(arr) => arr.length`,
  * should return 3.
 */
-function processDuplicateFree(/* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS */) {
-  /* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS */
+function processDuplicateFree(list, callback) {
+  let filtered = [];
+  list.forEach(s => {
+    if(!filtered.includes(s)){
+      filtered.push(s);
+    }
+  });
+  return callback(filtered);
 }
 
 /////////////// HIGHER-ORDER ARRAY METHODS ///////////////
@@ -253,8 +259,8 @@ function getFullNames(runners) {
  * @returns an array with all the runners' first names in ALL CAPS.
  * The first names appear in the array in the same order the runners appear in the `runners` array.
 */
-function firstNamesAllCaps(/* CODE HERE */) {
-  /* CODE HERE */
+function firstNamesAllCaps(runners) {
+  return runners.map(s => s.first_name = s.first_name.toUpperCase());
 }
 
 /**
@@ -271,8 +277,10 @@ function firstNamesAllCaps(/* CODE HERE */) {
  * @returns an array containing only the runners that use the given `tShirtSize`.
  * The runners in the array appear in the same order they appear in the `runners` array.
 */
-function getRunnersByTShirtSize(/* CODE HERE */) {
-  /* CODE HERE */
+function getRunnersByTShirtSize(runners, tShirtSize) {
+  let res = [];
+  runners.forEach(s => (s.shirt_size == tShirtSize) ? res.push(s) : s /*do nothing*/);
+  return res;
 }
 
 /**
