@@ -309,10 +309,15 @@ function tallyUpDonations(runners) {
  * Study the code for counter1 and counter2. Answer the questions below.
  * 
  * 1. What is the difference between counter1 and counter2?
+ *    counter1 keeps the count in block scope, and makes it so that you can have multiple seperate counts
+ *    counter2 keeps the count in global scope, meaning you can only have one counter.
  * 
  * 2. Which of the two uses a closure? How can you tell?
+ *    counter1 uses a closure because it returns a function
  * 
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
+ *    counter1 would be more useful if you have multiple different counts happening concurrently, counter2 would be more useful 
+ *    if you need the counter accessable from multiple different functions, and need it to be the same across your whole document
  *
 */
 
@@ -354,8 +359,16 @@ function counter2() {
  * counter() // should return 0
  * etc
 */
-function counterMakerWithLimit(/* CODE HERE */) {
-  /* CODE HERE */
+function counterMakerWithLimit(max) {
+  let count =0;
+  let limit = max;
+  return function (){
+    if(count > limit){
+      count = 0;
+      
+    }
+    return count++;
+  }
 }
 
 /////////////// END OF CHALLENGE ///////////////
